@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: `Tech against Corona Vir (COVID-19)`,
-    description: `With so many schools, universities, businesses being closed around us, we think it's the right time for software companies to do their part in helping people communicate and work remotely to tackle this crisis together.`,
+    title: `Tech against Coronavirus`,
+    description: `It is very likely that 1/5 of us will have to work for home in the very near future due to the coronavirus outbreak. So here’s a list of products you can use to maintain collaboration and work remotely with your team. As a distributed team ourselves, we’ve used many of these over the past 5 years. Please contribute with any software solution you’ve heard of or used yourself that might benefit others.`,
     author: `@techagainstcovid`,
   },
   plugins: [
@@ -49,7 +49,7 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-analy`,
       options: {
         trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
         head: false,
