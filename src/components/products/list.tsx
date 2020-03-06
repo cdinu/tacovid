@@ -5,7 +5,7 @@ import { StaticQuery, graphql } from "gatsby";
 const ProductList = ({ nodes }) => {
   return (
     <>
-      {nodes.filter(({data}) => data.Product).map(({ data: item }) => (
+      {nodes.filter(({data}) => data.Added).map(({ data: item }) => (
       <div>
         <h1>Product: {item.Product}</h1>
         <span>{item.Details}</span>
