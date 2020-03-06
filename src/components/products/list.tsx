@@ -1,17 +1,16 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 
+// component dumb
 const ProductList = ({ nodes }) => {
   return (
     <>
-      {nodes.map(({ data: item }) => (
+      {nodes.filter(({data}) => data.Product).map(({ data: item }) => (
       <div>
-        <h1>{item.Product}</h1>
+        <h1>Product: {item.Product}</h1>
         <span>{item.Details}</span>
         <br />
-        <span>{item.Details}</span>
-        <br />
-        <span>{item.Countries.join(' and ')}</span>
+        <span>{item.Countries?.join(' and ')}</span>
         <br />
         <span style={{display: 'inline-block', background: 'yellow'}}>{item.Software_category}</span>
         <br />
@@ -40,6 +39,7 @@ const query = graphql`
   }
 `;
 
+// container
 export default () => (
   <StaticQuery
     query={query}
