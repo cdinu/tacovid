@@ -1,0 +1,36 @@
+.header {
+  background-color: var(--blue);
+  color: var(--white);
+  overflow: hidden;
+
+  .headerContainer {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1200px;
+
+    > div { padding: 1em; }
+
+    > img {
+      margin-bottom: -4em;
+
+      @media only screen and (max-width: 600px) {
+        display: none;
+      }
+    }
+  }
+
+  .button {
+    background-color: var(--pink);
+    border-radius: 8px;
+    color: var(--white);
+    display: inline-flex;
+    margin-top: .5em;
+    padding: .2em .5em;
+    text-decoration: none;
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 1) -2px -2px 0;
+      transform: translateX(2px) translateY(2px);
+    }
+  }
+}
