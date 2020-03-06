@@ -1,22 +1,34 @@
 import React from "react";
 import { StaticQuery, graphql } from "gatsby";
+import styles from './list.module.scss';
+import icon from '../../images/icons/hs-url.svg';
 
 // component dumb
 const ProductList = ({ nodes }) => {
+  const products = nodes.filter(({data}) => data.Added);
+  const nrProducts = products.length;
+
   return (
     <>
-      {nodes.filter(({data}) => data.Added).map(({ data: item }) => (
-      <div>
-        <h1>Product: {item.Product}</h1>
-        <span>{item.Details}</span>
-        <br />
-        <span>{item.Countries?.join(' and ')}</span>
-        <br />
-        <span style={{display: 'inline-block', background: 'yellow'}}>{item.Software_category}</span>
-        <br />
-        <a href={`${item.Website}?utm=tacv`} target='blank'>website</a>
-        <hr />
+      <div className={styles.headerContainer}>
+        <div className={styles.header}>
+          <span>{nrProducts} products</span>
+          <span>Tweet about this</span>
+        </div>
       </div>
+      {nodes.filter(({data}) => data.Added).map(({ data: item }) => (
+      <a href={`${item.Website}?utm=tacv`} className={styles.item} key={item.productName}>
+        <div className={styles.productName}>
+          {/* <img src={`https://www.google.com/s2/favicons?domain=${item.Website}`} /> */}
+          <img src={`https://api.faviconkit.com/${item.Website.split('/')[item.Website.startsWith('http')?2:0]}/144`} className={styles.favicon} />
+          {/* <img src={`https://api.statvoo.com/favicon/?url=${item.Website.split('/')[item.Website.startsWith('http')?2:0]}`} className={styles.favicon} /> */}
+          <div>{item.Product}</div>
+        </div>
+        <span className={styles.details}>{item.Details}</span>
+        {/* <span>{item.Countries?.join(' and ')}</span> */}
+        <span className={styles.category}>{item.Software_category}</span>
+        <img src={icon} className={styles.icon} />
+      </a>
     ))}
   </>
   );
@@ -46,4 +58,3 @@ export default () => (
     render={data => <ProductList nodes={data.allAirtable.nodes} />}
   />
 )
-

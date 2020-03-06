@@ -3,12 +3,14 @@
   --pink: #EA4C89;
   --orange: #F7BE16;
   --dark-grey: #333333;
-  --light-yellow: #F5F3ED;
+  --light-yellow: rgb(245, 243, 237);
   --white: #f1f1f1;
+  --max-width: 1200px;
 }
 
 html {
   font-size: 20px;
+  background-color: var(--light-yellow);
 }
 
 body, p, div, span {
@@ -18,4 +20,19 @@ body, p, div, span {
 h1, h2, h3, h4, h5 {
   font-family: 'Roboto Slab', serif;
   line-height: 110%;
+}
+
+footer {
+  opacity: .6;
+}
+
+footer:hover {
+  opacity: 1;
+}
+
+footer > div {
+  font-size: .65em;
+  max-width: var(--max-width);
+  padding: 1em 1em;
+  margin: 0 auto;
 }

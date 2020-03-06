@@ -27,20 +27,17 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
+      <main>{children}</main>
+      <footer>
+        <div>
+          © {new Date().getFullYear()}, created by the team behind
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+          <a href="https://hypersay.com" target="_blank">hypersay.com</a>, contact us at
+          {` `}
+          <a href="mailto:hello@techagainstcoronavirus.com">hello@techagainstcoronavirus.com</a>,
+          {` `}please don't spam us!
+        </div>
+      </footer>
     </>
   )
 }

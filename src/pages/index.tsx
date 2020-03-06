@@ -11,10 +11,6 @@ const IndexPage = ({ data }) => (
   <Layout>
       <SEO title="Home" />
       <ProductList />
-      <br />
-      <div>
-        <Link to="/submit" className={styles.tellus}>Tell us about a product</Link>
-      </div>
   </Layout>
 );
 
