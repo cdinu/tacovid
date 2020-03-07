@@ -8,9 +8,6 @@ interface HeaderProps {
 }
 
 const Header = ({ mode }: HeaderProps) => {
-
-  console.log(mode);
-
   return (
   <header className={styles.header}>
     <div className={styles.headerContainer}>

@@ -13,19 +13,16 @@ const ProductList = ({ nodes }) => {
       <div className={styles.headerContainer}>
         <div className={styles.header}>
           <span>{nrProducts} products</span>
-          <span>Tweet about this</span>
+          <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" className="twitter-share-button" data-size="large" data-text="Awesome list for remote learning https://techagainstcoronavirus.com" data-hashtags="techagainstcoronavirus" data-related="@tacovid" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
         </div>
       </div>
-      {nodes.filter(({data}) => data.Added).map(({ data: item }) => (
-      <a href={`${item.Website}?utm=tacv`} className={styles.item} key={item.productName}>
+      {nodes.filter(({data}) => data.Added).map(({ data: item}, key) => (
+      <a href={`${item.Website}?utm=tacv`} className={styles.item} key={key}>
         <div className={styles.productName}>
-          {/* <img src={`https://www.google.com/s2/favicons?domain=${item.Website}`} /> */}
           <img src={`https://api.faviconkit.com/${item.Website.split('/')[item.Website.startsWith('http')?2:0]}/144`} className={styles.favicon} alt={` logo for ${item.Product}`} />
-          {/* <img src={`https://api.statvoo.com/favicon/?url=${item.Website.split('/')[item.Website.startsWith('http')?2:0]}`} className={styles.favicon} /> */}
           <div>{item.Product}</div>
         </div>
         <span className={styles.details}>{item.Details}</span>
-        {/* <span>{item.Countries?.join(' and ')}</span> */}
         <span className={styles.category}>{item.Software_category}</span>
         <img src={icon} className={styles.icon} alt="click to open" />
       </a>
