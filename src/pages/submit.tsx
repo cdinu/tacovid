@@ -1,10 +1,10 @@
 import React from "react";
 
-import Layout from "../components/layout";
+import LayoutSlim from "../components/layout-slim";
 import SEO from "../components/seo";
 
 const IndexPage = ({ data }) => (
-  <Layout>
+  <LayoutSlim>
       <SEO title="Tell us" />
       <iframe
         className="airtable-embed airtable-dynamic-height"
@@ -13,8 +13,9 @@ const IndexPage = ({ data }) => (
         height="1100"
         style={{
           border: "none",
-        }}></iframe>
-  </Layout>
+        }}
+        title="Airtable form"></iframe>
+  </LayoutSlim>
 );
 
 export default IndexPage

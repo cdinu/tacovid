@@ -8,6 +8,11 @@
     margin: 0 auto;
     max-width: 1200px;
 
+    a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
     > div { padding: 1em; }
 
     > img {

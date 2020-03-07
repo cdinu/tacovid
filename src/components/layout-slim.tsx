@@ -1,10 +1,3 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from "react"
 import PropTypes from "prop-types"
 
@@ -12,10 +5,10 @@ import Header from "./header"
 import "./reset.css"
 import "./global.css"
 
-const Layout = ({ children }) => {
+const LayoutSlim = ({ children }) => {
   return (
     <>
-      <Header mode={null} />
+      <Header mode="slim" />
       <main>{children}</main>
       <footer>
         <div>
@@ -31,8 +24,8 @@ const Layout = ({ children }) => {
   )
 }
 
-Layout.propTypes = {
+LayoutSlim.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-export default Layout
+export default LayoutSlim
