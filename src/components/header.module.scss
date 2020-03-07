@@ -25,17 +25,17 @@
   }
 
   .button {
-    font-size: 1.5rem;
     background-color: var(--pink);
     border-radius: 8px;
     color: var(--white);
     display: inline-flex;
+    font-size: 1.5rem;
     margin-top: .5em;
     padding: .5em .8em;
     text-decoration: none;
 
     &:hover {
-      box-shadow: rgba(0, 0, 0, .7) 2px 2px 5px;
+      box-shadow: var(--dark) 2px 2px 5px;
       transform: translateX(-2px) translateY(-2px);
     }
   }

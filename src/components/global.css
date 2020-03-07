@@ -5,6 +5,10 @@
   --dark-grey: #333333;
   --light-yellow: rgb(245, 243, 237);
   --white: #f1f1f1;
+  --black: #000000;
+  --dark: rgba(0, 0, 0, .7);
+  --shadow-bottom-right: #e6e4df;
+  --shadow-top-left: #fffffb;
   --max-width: 1200px;
 }
 
