@@ -1,7 +1,6 @@
 import { Link, withPrefix } from "gatsby"
 import React from "react"
 import styles from './header.module.scss';
-import svg from '../images/dude.svg';
 
 interface HeaderProps {
   mode: 'slim' | undefined;
