@@ -3,6 +3,7 @@
   --pink: #EA4C89;
   --orange: #F7BE16;
   --dark-grey: #333333;
+  --light-grey: #c9c9c9;
   --light-yellow: rgb(245, 243, 237);
   --white: #f1f1f1;
   --black: #000000;
@@ -10,6 +11,7 @@
   --shadow-bottom-right: #e6e4df;
   --shadow-top-left: #fffffb;
   --max-width: 1200px;
+  --twitter-blue: #38A0CD;
 }
 
 html {

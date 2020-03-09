@@ -6,8 +6,8 @@ import ProductList from "../components/products/list";
 
 const IndexPage = ({ data }) => (
   <Layout>
-      <SEO title="Tech against Coronavirus - a list to work and learn remotely" />
-      <ProductList segment={null} />
+      <SEO title="Tech against Coronavirus - a list to work remotely" />
+      <ProductList segment="Work" />
   </Layout>
 );
 

@@ -6,11 +6,29 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
 import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, withPrefix } from "gatsby"
 
-function SEO({ description, lang, meta, title }) {
+interface Meta {
+  name: string;
+  content: string;
+}
+interface SEOProps {
+  description?: string;
+  meta?: Meta[];
+  keywords?: string[];
+  title: string;
+  shareImage?: string;
+}
+
+const SEO = ({
+    description = 'Hypersay - live interactive presentations',
+    meta = [],
+    keywords = [],
+    title,
+    shareImage = 'share-image-presentations.jpg',
+  }: SEOProps) => {
+
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -25,7 +43,9 @@ function SEO({ description, lang, meta, title }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
+  const lang = "en";
+
+  const metaDescription = description || site.siteMetadata.description;
 
   return (
     <Helmet
@@ -52,6 +72,18 @@ function SEO({ description, lang, meta, title }) {
           content: `website`,
         },
         {
+          property: 'og:locale',
+          content: lang,
+        },
+        {
+          name: 'og:url',
+          content: 'https://techagainstcoronavirus.com',
+        },
+        {
+          property: 'og:image',
+          content: withPrefix(`/images/${shareImage}`), // add here real image
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
@@ -67,22 +99,26 @@ function SEO({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+        {
+          name: 'twitter:url',
+          content: 'https://techagainstcoronavirus.com',
+        },
+        {
+          name: 'twitter:image',
+          content: withPrefix(`/images/${shareImage}`), // add here real image
+        },
+      ]
+      .concat(
+        keywords.length > 0
+          ? {
+              name: 'keywords',
+              content: keywords.join(', '),
+            }
+          : [],
+      )
+      .concat(meta)}
     />
   )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
 }
 
 export default SEO

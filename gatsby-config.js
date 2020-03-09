@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Tech against Coronavirus`,
-    description: `It is very likely that 1/5 of us will have to work for home in the very near future due to the coronavirus outbreak. So here’s a list of products you can use to maintain collaboration and work remotely with your team. As a distributed team ourselves, we’ve used many of these over the past 5 years. Please contribute with any software solution you’ve heard of or used yourself that might benefit others.`,
+    description: `Simple list to help you work and learn #remotely. In the times of coronavirus outbreak lots of software companies are helping teams around the world keep a certain level of normality. Stay safe!`,
     author: `@techagainstcovid`,
   },
   plugins: [
@@ -66,7 +66,8 @@ module.exports = {
         ],
         display: 'swap'
       }
-    }
+    },
+    `gatsby-plugin-twitter`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

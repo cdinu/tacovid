@@ -1,5 +1,5 @@
 .headerContainer {
-  background-color: var(--white);
+  // background-color: rgb(32, 32, 37);
   color: var(--dark-grey);
 
   .header {
@@ -7,7 +7,7 @@
     justify-content: space-between;
     margin: 0 auto;
     max-width: var(--max-width);
-    padding: .2em 1em;
+    padding: .5em 1em;
   }
 }
 
@@ -68,5 +68,52 @@
     border-color: var(--orange);
     .productName { color: var(--pink); }
     .icon { opacity: 1; }
+  }
+}
+
+.tagsContainer {
+  display: flex;
+
+  > a {
+    font-size: .8em;
+    color: var(--black);
+    background-color: var(--light-grey);
+    padding: .1em .6em;
+    border-radius: 5px;
+    text-decoration: none;
+
+    &:hover {
+      background-color: var(--pink);
+      color: var(--white);
+    }
+
+    &.active {
+      background-color: var(--pink);
+      color: var(--white);
+    }
+
+    & + a { margin-left: 1em; }
+  }
+}
+
+.tweetaboutthis {
+  font-size: .8em;
+  background-color: var(--twitter-blue);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: .2em .8em;
+
+  &:hover {
+    background-color: #2B80A5;
+  }
+
+
+  img {
+    max-height: .8em;
+    margin: 0;
+    margin-right: .5em;
   }
 }
