@@ -1,12 +1,38 @@
+# Tech against Coronavirus
+
+<img alt="A list of tools for working or teaching remotely" src="https://techagainstcoronavirus.com/images/share-image.jpg" width="60" />
+
+It is very likely that 1/5 of us will have to work for home in the very near future due to the coronavirus outbreak. So here’s a list of products you can use to maintain collaboration and work remotely with your team. As a distributed team ourselves, we’ve used many of these over the past 5 years. Please contribute with any software solution you’ve heard of or used yourself that might benefit others.
+
+Let’s do this together!
+
+https://techagainstcoronavirus.com/
+
+
+## Contributing
+
+Any contribution is welcome. 
+
+This is a static website, generated using Gatsby.
+
+We use Airtable as a database backend (one time, at generation). Ask for a copy of the table, if you want to develop.
+
+Fork the repo, submit Pull/Merge requests and they'll be promptly reviewed and approved.
+
+
+---------
+
+
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
   </a>
 </p>
-<h1 align="center">
+<h2 align="center">
   Gatsby's default starter
-</h1>
+</h2>
 
 Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
 
