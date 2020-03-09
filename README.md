@@ -1,12 +1,12 @@
 # Tech against Coronavirus
 
-<img alt="A list of tools for working or teaching remotely" src="https://techagainstcoronavirus.com/images/share-image.jpg" width="60" />
-
 It is very likely that 1/5 of us will have to work for home in the very near future due to the coronavirus outbreak. So here’s a list of products you can use to maintain collaboration and work remotely with your team. As a distributed team ourselves, we’ve used many of these over the past 5 years. Please contribute with any software solution you’ve heard of or used yourself that might benefit others.
 
 Let’s do this together!
 
 https://techagainstcoronavirus.com/
+
+<img alt="A list of tools for working or teaching remotely" src="https://techagainstcoronavirus.com/images/share-image.jpg" />
 
 
 ## Contributing
