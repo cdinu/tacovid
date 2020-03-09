@@ -22,7 +22,7 @@ interface SEOProps {
 }
 
 const SEO = ({
-    description = 'Hypersay - live interactive presentations',
+    description,
     meta = [],
     keywords = [],
     title,
