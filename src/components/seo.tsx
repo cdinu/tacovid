@@ -26,7 +26,7 @@ const SEO = ({
     meta = [],
     keywords = [],
     title,
-    shareImage = 'share-image-presentations.jpg',
+    shareImage = 'share-image.jpg',
   }: SEOProps) => {
 
   const { site } = useStaticQuery(

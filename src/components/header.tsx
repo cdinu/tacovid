@@ -1,4 +1,4 @@
-import { Link } from "gatsby"
+import { Link, withPrefix } from "gatsby"
 import React from "react"
 import styles from './header.module.scss';
 import svg from '../images/dude.svg';
@@ -27,7 +27,7 @@ const Header = ({ mode }: HeaderProps) => {
             </>
           : null }
       </div>
-      {mode !== 'slim' ? <img src={svg} alt="dude" /> : null}
+      {mode !== 'slim' ? <img src={withPrefix('/images/flying-man.svg')} alt="dude" /> : null}
     </div>
   </header>
 )}
