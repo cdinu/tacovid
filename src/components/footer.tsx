@@ -1,5 +1,4 @@
 import React from "react"
-import GitHubButton from 'react-github-btn'
 
 const Footer = () => (
   <footer>
@@ -11,8 +10,8 @@ const Footer = () => (
       <a href="mailto:hello@techagainstcoronavirus.com">hello@techagainstcoronavirus.com</a>,
       {` `}please don't spam us!
       <br/>
-      This is an open source project, built on <a href="https://www.gatsbyjs.org/" target="_blank">GatsbyJS</a> and 
-      hosted on <a href="https://github.com/cdinu/tacovid" target="_blank">GitHub</a>.
+      This is an open source project, built on <a href="https://www.gatsbyjs.org/" target="_blank" rel="noopener noreferrer">GatsbyJS</a> and 
+      hosted on <a href="https://github.com/cdinu/tacovid" target="_blank" rel="noopener noreferrer">GitHub</a>.
     </div>
   </footer>
 );
