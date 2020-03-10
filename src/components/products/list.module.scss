@@ -1,16 +1,12 @@
 .headerContainer {
-  // background-color: rgb(32, 32, 37);
   color: var(--dark-grey);
 
   .header {
     display: flex;
     justify-content: flex-start;
-    // display: grid;
-    // grid-template-columns: ;
-    // gap: .5em;
     margin: 0 auto;
     max-width: var(--max-width);
-    padding: 0 .5em;
+    padding: .5em .5em 0 1em;
 
     > * {
       margin: .5em .5em 0 0;
@@ -45,15 +41,6 @@
   & + a {
     margin-left: .5rem;
   }
-
-  // @media only screen and (max-width: 768px) {
-  //   width: 100%;
-  //   margin-bottom: .5em;
-
-  //   & + a {
-  //     margin-left: 0;
-  //   }
-  // }
 }
 
 .space { flex: 1 1; }
@@ -195,16 +182,3 @@
     }
   }
 }
-
-// .tagsContainer {
-//   display: flex;
-
-//   @media only screen and (max-width: 768px) {
-//     flex-wrap: wrap;
-//     width: 100%;
-//   }
-
-//   > a {
-//
-//   }
-// }
