@@ -1,0 +1,31 @@
+.smContainer {
+  display: flex;
+}
+
+.smBox {
+  display: inline-flex;
+  color: var(--black);
+  align-items: center;
+  margin: 0 .5em;
+  text-decoration: none;
+  border: 2px solid var(--lighter-grey);
+  border-radius: 8px;
+  padding: .2em .8em;
+
+  &:hover {
+    border-color: var(--black);
+  }
+
+  img {
+    display: inline-block;
+    margin: 0;
+    margin-right: .5em;
+
+  }
+}
+
+.copyrightContainer {
+  opacity: .7;
+
+  &:hover { opacity: 1; }
+}

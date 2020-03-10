@@ -1,8 +1,21 @@
 import React from "react"
+import { withPrefix } from "gatsby";
+import styles from './footer.module.scss';
 
 const Footer = () => (
   <footer>
-    <div>
+    <div className={styles.smContainer}>
+      {/* <span>Stay in touch with us: </span> */}
+      <a href="https://twitter.com/tacovid" target="_blank" rel="noopener noreferrer" className={styles.smBox}>
+        <img src={withPrefix('/images/twitter-feather.svg')} alt="" />
+        <span>Follow us on Twitter</span>
+      </a>
+      <a href="https://www.instagram.com/tacovid/" target="_blank" rel="noopener noreferrer" className={styles.smBox}>
+        <img src={withPrefix('/images/instagram-feather.svg')} alt="" />
+        <span>Follow us on Instagram</span>
+      </a>
+    </div>
+    <div className={styles.copyrightContainer}>
       © {new Date().getFullYear()}, created by
       {` `}
       <a href="https://twitter.com/paulbalogh" target="_blank" rel="noopener noreferrer">Paul Balogh</a> and <a href="https://twitter.com/cdinu" target="_blank" rel="noopener noreferrer">Cristian Dinu</a>, founders of <a href="https://hypersay.com" target="_blank" rel="noopener noreferrer">Hypersay</a>;

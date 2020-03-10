@@ -3,6 +3,7 @@
   --pink: #EA4C89;
   --orange: #F7BE16;
   --dark-grey: #333333;
+  --lighter-grey: #cccccc;
   --light-grey: #c9c9c9;
   --light-yellow: rgb(245, 243, 237);
   --white: #f1f1f1;
@@ -26,14 +27,6 @@ body, p, div, span {
 h1, h2, h3, h4, h5 {
   font-family: 'Roboto Slab', serif;
   line-height: 110%;
-}
-
-footer {
-  opacity: .6;
-}
-
-footer:hover {
-  opacity: 1;
 }
 
 footer > div {
