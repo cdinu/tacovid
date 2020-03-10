@@ -6,28 +6,59 @@ import Img from 'react-image';
 
 export interface ProductListProps {
   nodes: any;
-  segment: 'Work' | 'Edu' | 'News' | undefined;
+  segment: 'Work' | 'Edu' | 'News' | 'Covid-19' | undefined;
+  type: 'recommended' | undefined;
 }
 
 // component dumb
-const ProductList:React.FC<ProductListProps> = ({ nodes, segment }) => {
-  let products = nodes.filter(({data}) => data.Added).sort((a,b) => a.Added-b.Added); // TO DO sorting by Dinu
+const ProductList:React.FC<ProductListProps> = ({ nodes, segment, type }) => {
+  let products = nodes.filter(({data}) => data.Added).sort((a,b) => a.Added-b.Added).sort((a,b) => b.Gold-a.Gold); // TO DO sorting by Dinu: main criterion: Gold, secondary criterion: date added
 
   if (segment) {
     products = products.filter( ({data})  => (data.Tags || []).indexOf(segment) > -1);
   }
 
+  if (type) {
+    products = products.filter( ({data})  => data.Gold);
+  }
+
   const nrProducts = products.length;
+
+  const twitter = (twitterHandler: string | undefined) =>
+    twitterHandler
+      ? <a
+          href={`https://twitter.com/${twitterHandler}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={withPrefix('/images/twitter.svg')} className={styles.icon} alt="twitter" />
+        </a>
+      : null;
+
+  const star = (gold: string | undefined) =>
+    gold
+      ? <img src={withPrefix('/images/star.svg')} className={styles.icon} alt="star" />
+      : null;
+
+  const favicon = (url: string, product: string) =>
+    <Img
+      src={[
+        `https://api.faviconkit.com/${url.split('/')[url.startsWith('http')?2:0]}/144`,
+        withPrefix('/images/globe.svg')]}
+      className={styles.favicon}
+      alt={` logo for ${product}`}
+    />;
 
   return (
     <>
       <div className={styles.headerContainer}>
         <div className={styles.header}>
           <div className={styles.tagsContainer}>
-            <Link to="/" activeClassName={styles.active} >All {segment === null && `(${nrProducts})`}</Link>
+            <Link to="/" activeClassName={styles.active} >Recommended {type === 'recommended' && `(${nrProducts})`}</Link>
             <Link to="/work" activeClassName={styles.active}>Work {segment === 'Work' && `(${nrProducts})`}</Link>
             <Link to="/edu" activeClassName={styles.active}>Edu {segment === 'Edu' && `(${nrProducts})`}</Link>
-            <Link to="/news" activeClassName={styles.active}>News {segment === 'News' && `(${nrProducts})`}</Link>
+            <Link to="/covid-19" activeClassName={styles.active}>News {segment === 'Covid-19' && `(${nrProducts})`}</Link>
+            <Link to="/all" activeClassName={styles.active} >All {segment === null && type !== 'recommended' && `(${nrProducts})`}</Link>
           </div>
           <a
             href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechagainstcoronavirus.com&text=Awesome%20list%20for%20working%20remotely&hashtags=techagainstcoronavirus%2Cremotely%2Cworkremotely%2Clearnremotely"
@@ -43,20 +74,16 @@ const ProductList:React.FC<ProductListProps> = ({ nodes, segment }) => {
       {products.map(({ data: item}, key) => (
       <a href={`${item.Website}?utm_source=tacv`} target="_blank" className={styles.item} key={key} rel="noopener noreferrer">
         <div className={styles.productName}>
-          <Img
-            src={[
-              `https://api.faviconkit.com/${item.Website.split('/')[item.Website.startsWith('http')?2:0]}/144`,
-              withPrefix('/images/globe.svg')]}
-            className={styles.favicon}
-            alt={` logo for ${item.Product}`}
-          />
+          {favicon(item.Website, item.Product)}
           <div className={styles.name}>{item.Product}</div>
         </div>
-        <span className={styles.details}>{item.Details}</span>
-        <span className={styles.rightSide}>
+        <div className={styles.details}>{item.Details}</div>
+        <div className={styles.rightSide}>
+          {star(item.Gold)}
+          {twitter(item.Twitter)}
           <span className={styles.category}>{item.Software_category}</span>
           <img src={icon} className={styles.icon} alt="click to open" />
-        </span>
+        </div>
       </a>
     ))}
   </>
@@ -76,6 +103,7 @@ const query = graphql`
           Website
           Twitter
           Tags
+          Gold
         }
       }
     }
@@ -83,9 +111,9 @@ const query = graphql`
 `;
 
 // container
-export default ({ segment }) => (
+export default ({ segment, type }) => (
   <StaticQuery
     query={query}
-    render={data => <ProductList nodes={data.allAirtable.nodes} segment={segment} />}
+    render={data => <ProductList nodes={data.allAirtable.nodes} segment={segment} type={type} />}
   />
 )
