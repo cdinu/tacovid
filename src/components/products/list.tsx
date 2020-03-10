@@ -57,7 +57,7 @@ const ProductList:React.FC<ProductListProps> = ({ nodes, segment, type }) => {
             <Link to="/" activeClassName={styles.active} >Recommended {type === 'recommended' && `(${nrProducts})`}</Link>
             <Link to="/work" activeClassName={styles.active}>Work {segment === 'Work' && `(${nrProducts})`}</Link>
             <Link to="/edu" activeClassName={styles.active}>Edu {segment === 'Edu' && `(${nrProducts})`}</Link>
-            <Link to="/covid-19" activeClassName={styles.active}>News {segment === 'Covid-19' && `(${nrProducts})`}</Link>
+            <Link to="/covid-19" activeClassName={styles.active}>Covid-19 {segment === 'Covid-19' && `(${nrProducts})`}</Link>
             <Link to="/all" activeClassName={styles.active} >All {segment === null && type !== 'recommended' && `(${nrProducts})`}</Link>
           </div>
           <a
