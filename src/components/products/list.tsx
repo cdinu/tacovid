@@ -12,7 +12,7 @@ export interface ProductListProps {
 
 // component dumb
 const ProductList:React.FC<ProductListProps> = ({ nodes, segment, type }) => {
-  let products = nodes.filter(({data}) => data.Added).sort((a,b) => a.Added-b.Added).sort((a,b) => b.Gold-a.Gold); // TO DO sorting by Dinu: main criterion: Gold, secondary criterion: date added
+  let products = nodes.filter(({data}) => data.Added);
 
   if (segment) {
     products = products.filter( ({data})  => (data.Tags || []).indexOf(segment) > -1);
@@ -92,7 +92,7 @@ const ProductList:React.FC<ProductListProps> = ({ nodes, segment, type }) => {
 
 const query = graphql`
   query MyQuery {
-    allAirtable {
+    allAirtable(sort: {fields: [data___Gold, data___Added, data___Product], order: ASC}) {
       nodes {
         data {
           Product
