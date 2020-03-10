@@ -4,19 +4,17 @@
 
   .header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    // display: grid;
+    // grid-template-columns: ;
+    // gap: .5em;
     margin: 0 auto;
     max-width: var(--max-width);
-    padding: .5em 1em;
+    padding: 0 .5em;
 
-    // @media only screen and (max-width: 700px) {
-    //   flex-wrap: wrap;
-
-    //   > :last-child {
-    //     // margin-top: 1em;
-
-    //   }
-    // }
+    > * {
+      margin: .5em .5em 0 0;
+    }
 
     @media only screen and (max-width: 768px) {
       flex-wrap: wrap;
@@ -24,6 +22,62 @@
   }
 }
 
+.linkItem {
+  font-size: .8em;
+  color: var(--black);
+  background-color: var(--light-grey);
+  padding: .1em .6em;
+  border-radius: 5px;
+  text-decoration: none;
+
+  // display: inline-block;
+
+  &:hover {
+    background-color: var(--pink);
+    color: var(--white);
+  }
+
+  &.active {
+    background-color: var(--pink);
+    color: var(--white);
+  }
+
+  & + a {
+    margin-left: .5rem;
+  }
+
+  // @media only screen and (max-width: 768px) {
+  //   width: 100%;
+  //   margin-bottom: .5em;
+
+  //   & + a {
+  //     margin-left: 0;
+  //   }
+  // }
+}
+
+.space { flex: 1 1; }
+
+.tweetaboutthis {
+  font-size: .8em;
+  background-color: var(--twitter-blue);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+  padding: .2em .8em;
+
+  &:hover {
+    background-color: #2B80A5;
+  }
+
+  img {
+    max-height: .8em;
+    margin: 0;
+    margin-right: .5em;
+  }
+}
 .item {
   align-items: center;
   border: 2px solid var(--light-yellow);
@@ -92,7 +146,7 @@
     // .info {
     //   display: none;
     // }
- 
+
   }
 
   .category {
@@ -142,66 +196,15 @@
   }
 }
 
-.tagsContainer {
-  display: flex;
+// .tagsContainer {
+//   display: flex;
 
-  @media only screen and (max-width: 768px) {
-    flex-wrap: wrap;
-    width: 100%;
-  }
+//   @media only screen and (max-width: 768px) {
+//     flex-wrap: wrap;
+//     width: 100%;
+//   }
 
-  > a {
-    font-size: .8em;
-    color: var(--black);
-    background-color: var(--light-grey);
-    padding: .1em .6em;
-    border-radius: 5px;
-    text-decoration: none;
-
-    // display: inline-block;
-
-    &:hover {
-      background-color: var(--pink);
-      color: var(--white);
-    }
-
-    &.active {
-      background-color: var(--pink);
-      color: var(--white);
-    }
-
-    & + a {
-      margin-left: 1em;
-    }
-
-    @media only screen and (max-width: 768px) {
-      width: 100%;
-      margin-bottom: .5em;
-
-      & + a {
-        margin-left: 0;
-      }
-    }
-  }
-}
-
-.tweetaboutthis {
-  font-size: .8em;
-  background-color: var(--twitter-blue);
-  color: var(--white);
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-  border-radius: 8px;
-  padding: .2em .8em;
-
-  &:hover {
-    background-color: #2B80A5;
-  }
-
-  img {
-    max-height: .8em;
-    margin: 0;
-    margin-right: .5em;
-  }
-}
+//   > a {
+//
+//   }
+// }

@@ -26,7 +26,7 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
 
   const nrProducts = products.length
 
-  const twitter = (twitterHandler: string | undefined) =>
+  const twitterIcon = (twitterHandler: string | undefined) =>
     twitterHandler ? (
       <a
         href={`https://twitter.com/${twitterHandler}`}
@@ -63,40 +63,43 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
     />
   )
 
+  const tweetThis =  () => (
+    <a
+      href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechagainstcoronavirus.com&text=Awesome%20list%20for%20working%20remotely&hashtags=techagainstcoronavirus%2Cremotely%2Cworkremotely%2Clearnremotely"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.tweetaboutthis}
+    >
+      <img
+        src={withPrefix("/images/twitter-logo.png")}
+        alt="tweet this"
+      />
+      <span>Tweet about this</span>
+    </a>
+  )
+
   return (
     <>
       <div className={styles.headerContainer}>
         <div className={styles.header}>
-          <div className={styles.tagsContainer}>
-            <Link to="/" activeClassName={styles.active}>
-              Recommended {type === "recommended" && `(${nrProducts})`}
-            </Link>
-            <Link to="/work" activeClassName={styles.active}>
-              Work {segment === "Work" && `(${nrProducts})`}
-            </Link>
-            <Link to="/edu" activeClassName={styles.active}>
-              Edu {segment === "Edu" && `(${nrProducts})`}
-            </Link>
-            <Link to="/covid-19" activeClassName={styles.active}>
-              Covid-19 {segment === "Covid-19" && `(${nrProducts})`}
-            </Link>
-            <Link to="/all" activeClassName={styles.active}>
-              All{" "}
-              {segment === null && type !== "recommended" && `(${nrProducts})`}
-            </Link>
-          </div>
-          <a
-            href="https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechagainstcoronavirus.com&text=Awesome%20list%20for%20working%20remotely&hashtags=techagainstcoronavirus%2Cremotely%2Cworkremotely%2Clearnremotely"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.tweetaboutthis}
-          >
-            <img
-              src={withPrefix("/images/twitter-logo.png")}
-              alt="tweet this"
-            />
-            <span>Tweet about this</span>
-          </a>
+          <Link to="/" className={styles.linkItem} activeClassName={styles.active}>
+            Recommended {type === "recommended" && `(${nrProducts})`}
+          </Link>
+          <Link to="/work" className={styles.linkItem} activeClassName={styles.active}>
+            Work {segment === "Work" && `(${nrProducts})`}
+          </Link>
+          <Link to="/edu" className={styles.linkItem} activeClassName={styles.active}>
+            Edu {segment === "Edu" && `(${nrProducts})`}
+          </Link>
+          <Link to="/covid-19" className={styles.linkItem} activeClassName={styles.active}>
+            Covid-19 {segment === "Covid-19" && `(${nrProducts})`}
+          </Link>
+          <Link to="/all" className={styles.linkItem} activeClassName={styles.active}>
+            All{" "}
+            {segment === null && type !== "recommended" && `(${nrProducts})`}
+          </Link>
+          <div className={styles.space} />
+          <div>{tweetThis()}</div>
         </div>
       </div>
       {products.map(({ data: item }, key) => (
@@ -114,7 +117,7 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
           <div className={styles.details}>{item.Details}</div>
           <div className={styles.rightSide}>
             {star(item.Gold)}
-            {twitter(item.Twitter)}
+            {twitterIcon(item.Twitter)}
             <span className={styles.category}>{item.Software_category}</span>
             <img src={icon} className={styles.icon} alt="click to open" />
           </div>
