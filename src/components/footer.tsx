@@ -23,7 +23,7 @@ const Footer = () => (
       <a href="mailto:hello@techagainstcoronavirus.com">hello@techagainstcoronavirus.com</a>,
       {` `}please don't spam us!
       <br/>
-      This is an open source project, built on <a href="https://www.gatsbyjs.org/" target="_blank" rel="noopener noreferrer">GatsbyJS</a>, using an <a href="https://airtable.com/" target="_blank" rel="noopener noreferrer">Airtable</a> database and hosted on <a href="https://github.com/cdinu/tacovid" target="_blank" rel="noopener noreferrer">GitHub</a>.
+      This is an open source project, built on <a href="https://www.gatsbyjs.org/" target="_blank" rel="noopener noreferrer">GatsbyJS</a>, using an <a href="https://airtable.com/" target="_blank" rel="noopener noreferrer">Airtable</a> database and hosted on <a href="https://github.com/cdinu/tacovid" target="_blank" rel="noopener noreferrer">GitHub</a>. Favicons served by <a href="http://faviconkit.com?utm_source=tacovid" target="_blank" rel="noopener noreferrer">FaviconKit</a>.
     </div>
   </footer>
 );
