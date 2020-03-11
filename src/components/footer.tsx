@@ -1,6 +1,7 @@
 import React from "react"
 import { withPrefix } from "gatsby";
 import styles from './footer.module.scss';
+import SmartLink from "./smart-link"
 
 const Footer = () => (
   <footer>
@@ -18,12 +19,17 @@ const Footer = () => (
     <div className={styles.copyrightContainer}>
       © {new Date().getFullYear()}, created by
       {` `}
-      <a href="https://twitter.com/paulbalogh" target="_blank" rel="noopener noreferrer">Paul Balogh</a> and <a href="https://twitter.com/cdinu" target="_blank" rel="noopener noreferrer">Cristian Dinu</a>, founders of <a href="https://hypersay.com" target="_blank" rel="noopener noreferrer">Hypersay</a>;
+      <a href="https://twitter.com/paulbalogh" target="_blank" rel="noopener noreferrer">Paul Balogh</a> and <a href="https://twitter.com/cdinu" target="_blank" rel="noopener noreferrer">Cristian Dinu</a>, founders
+      of <SmartLink href="https://hypersay.com" content="credits">Hypersay</SmartLink>;
       {` `}Contact us at{` `}
       <a href="mailto:hello@techagainstcoronavirus.com">hello@techagainstcoronavirus.com</a>,
       {` `}please don't spam us!
       <br/>
-      This is an open source project, built on <a href="https://www.gatsbyjs.org/" target="_blank" rel="noopener noreferrer">GatsbyJS</a>, using an <a href="https://airtable.com/" target="_blank" rel="noopener noreferrer">Airtable</a> database and hosted on <a href="https://github.com/cdinu/tacovid" target="_blank" rel="noopener noreferrer">GitHub</a>. Favicons served by <a href="http://faviconkit.com?utm_source=tacovid" target="_blank" rel="noopener noreferrer">FaviconKit</a>.
+      This is an open source project, built.
+      on <SmartLink href="https://www.gatsbyjs.org/" label="Gatsby" content="credits">GatsbyJS</SmartLink>, using
+      an <SmartLink href="https://airtable.com/" content="credits">Airtable</SmartLink> database and hosted
+      on <SmartLink href="https://github.com/cdinu/tacovid" content="credits">GitHub</SmartLink>.
+      Favicons served by <SmartLink href="http://faviconkit.com" content="credits">FaviconKit</SmartLink>.
     </div>
   </footer>
 );

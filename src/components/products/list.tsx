@@ -1,8 +1,11 @@
 import React from "react"
+import Img from "react-image"
+
 import { StaticQuery, graphql, Link, withPrefix } from "gatsby"
 import styles from "./list.module.scss"
 import icon from "../../images/icons/hs-url.svg"
-import Img from "react-image"
+
+import SmartLink from '../smart-link';
 
 export interface ProductListProps {
   nodes: any
@@ -103,12 +106,11 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
         </div>
       </div>
       {products.map(({ data: item }, key) => (
-        <a
-          href={`${item.Website}?utm_source=tacv`}
-          target="_blank"
+        <SmartLink
+          href={item.Website}
           className={styles.item}
           key={key}
-          rel="noopener noreferrer"
+          label={item.Product}
         >
           <div className={styles.productName}>
             {favicon(item.Website, item.Product)}
@@ -121,7 +123,7 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
             <span className={styles.category}>{item.Software_category}</span>
             <img src={icon} className={styles.icon} alt="click to open" />
           </div>
-        </a>
+        </SmartLink>
       ))}
     </>
   )
