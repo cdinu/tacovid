@@ -17,6 +17,8 @@ export interface ProductListProps {
 const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
   let products = nodes.filter(({ data }) => data.Added)
 
+  const [search, setSearch] = React.useState('');
+
   if (segment) {
     products = products.filter(
       ({ data }) => (data.Tags || []).indexOf(segment) > -1
@@ -27,6 +29,18 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
     products = products.filter(({ data }) => data.Gold)
   }
 
+  if(search) {
+    search.toLowerCase().split(/\s/).forEach(s => {
+      products = products.filter(({ data }) =>
+        (data.Product || '').toLowerCase().indexOf(s) > -1 ||
+        (data.Details || '').toLowerCase().indexOf(s) > -1 ||
+        (data.Website || '').toLowerCase().indexOf(s) > -1 ||
+        (data.Software_category || '').toLowerCase().indexOf(s) > -1 ||
+        (data.Twitter || '').toLowerCase().indexOf(s) > -1 ||
+        (data.Tags ||[]).join(' ').toLowerCase().indexOf(s) > -1
+      );
+    });
+  }
   const nrProducts = products.length
 
   const twitterIcon = (twitterHandler: string | undefined) =>
@@ -81,6 +95,22 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
     </a>
   )
 
+  const getSearchBox = () => {
+    const onChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+      setSearch(event.target.value)
+    }
+
+    return (
+      <input
+        name="search"
+        value={search}
+        onChange={onChange}
+        type="search"
+        placeholder="Search this category"
+      />
+    )
+  }
+
   return (
     <>
       <div className={styles.headerContainer}>
@@ -101,6 +131,9 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
             All{" "}
             {segment === null && type !== "recommended" && `(${nrProducts})`}
           </Link>
+          <div className={styles.searchBox}>
+            {getSearchBox()}
+          </div>
           <div className={styles.space} />
           <div>{tweetThis()}</div>
         </div>
@@ -112,11 +145,11 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
           key={key}
           label={item.Product}
         >
-          <div className={styles.productName}>
+          <div className={styles.productName} title={item.Details}>
             {favicon(item.Website, item.Product)}
             <div className={styles.name}>{item.Product}</div>
           </div>
-          <div className={styles.details}>{item.Details}</div>
+          <div className={styles.details} title={item.Details}>{item.Details}</div>
           <div className={styles.rightSide}>
             {star(item.Gold)}
             {twitterIcon(item.Twitter)}

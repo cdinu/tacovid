@@ -18,6 +18,28 @@
   }
 }
 
+.searchBox {
+  font-size: .8em;
+  color: var(--black);
+
+  padding: 0;
+
+  input {
+    border-radius: 5px;
+    padding: .1em .6em;
+
+    &:hover {
+      background-color: var(--white);
+    }
+
+    &.active {
+      background-color: var(--pink);
+      color: var(--white);
+    }
+  }
+}
+
+
 .linkItem {
   font-size: .8em;
   color: var(--black);
