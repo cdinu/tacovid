@@ -104,20 +104,20 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
     />
   )
 
-  const tweetThis =  () => (
-    <a
-      href='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechagainstcoronavirus.com&text=Awesome%20list%20for%20working%20remotely&hashtags=techagainstcoronavirus%2Cremotely%2Cworkremotely%2Clearnremotely'
-      target='_blank'
-      rel='noopener noreferrer'
-      className={styles.tweetaboutthis}
-    >
-      <img
-        src={withPrefix('/images/twitter-logo.png')}
-        alt='tweet this'
-      />
-      <span>Tweet about this</span>
-    </a>
-  )
+  // const tweetThis =  () => (
+  //   <a
+  //     href='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechagainstcoronavirus.com&text=Awesome%20list%20for%20working%20remotely&hashtags=techagainstcoronavirus%2Cremotely%2Cworkremotely%2Clearnremotely'
+  //     target='_blank'
+  //     rel='noopener noreferrer'
+  //     className={styles.tweetaboutthis}
+  //   >
+  //     <img
+  //       src={withPrefix('/images/twitter-logo.png')}
+  //       alt='tweet this'
+  //     />
+  //     <span>Tweet about this</span>
+  //   </a>
+  // )
 
   const getSearchBox = () => {
     const onChange = (event:React.ChangeEvent<HTMLInputElement>) => {
@@ -130,7 +130,7 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
         value={search}
         onChange={onChange}
         type='search'
-        placeholder='Search this category'
+        placeholder='Search this category...'
       />
     )
   }
@@ -147,7 +147,7 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
         onChange={onChange}
         onBlur={onChange}
       >
-        <option value='Default'>Sort by</option>
+        <option value='Default'>Sort by...</option>
         <option value='Default'>Default</option>
         <option value='Name'>Name</option>
         <option value='Added'>Date added</option>
@@ -194,14 +194,14 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
             All{' '}
             {segment === null && type !== 'recommended' && `(${nrProducts})`}
           </Link>
+          <div className={styles.space} />
           <div className={styles.searchBox}>
             {getSearchBox()}
           </div>
           <div className={styles.searchBox}>
             {getSortBy()}
           </div>
-          <div className={styles.space} />
-          <div>{tweetThis()}</div>
+          {/* <div>{tweetThis()}</div> */}
         </div>
       </div>
       <div>

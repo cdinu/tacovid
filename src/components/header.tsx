@@ -7,6 +7,22 @@ interface HeaderProps {
 }
 
 const Header = ({ mode }: HeaderProps) => {
+
+  const tweetThis =  () => (
+    <a
+      href='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechagainstcoronavirus.com&text=Awesome%20list%20for%20working%20remotely&hashtags=techagainstcoronavirus%2Cremotely%2Cworkremotely%2Clearnremotely'
+      target='_blank'
+      rel='noopener noreferrer'
+      className={styles.tweetaboutthis}
+    >
+      <img
+        src={withPrefix('/images/twitter-logo.png')}
+        alt='tweet this'
+      />
+      <span>Tweet about this</span>
+    </a>
+  )
+
   return (
   <header className={styles.header}>
     <div className={styles.headerContainer}>
@@ -23,6 +39,7 @@ const Header = ({ mode }: HeaderProps) => {
                 <span>Do you know of a product that should be here?</span>
               </div>
               <Link to="/submit" className={styles.button}>Add product</Link>
+              {tweetThis()}
             </>
           : null }
       </div>

@@ -32,7 +32,7 @@
     border-radius: 8px;
     color: var(--white);
     display: inline-flex;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin-top: .5em;
     padding: .5em .8em;
     text-decoration: none;
@@ -41,5 +41,33 @@
       box-shadow: var(--dark) 2px 2px 5px;
       transform: translateX(-2px) translateY(-2px);
     }
+  }
+}
+
+.tweetaboutthis {
+  // font-size: .8em;
+  background-color: var(--twitter-blue);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 8px;
+  // padding: .2em .8em;
+  margin-left: .5em;
+
+  font-size: 1.2rem;
+  margin-top: .5em;
+  padding: .5em .8em;
+
+  &:hover {
+    background-color: #2B80A5;
+    box-shadow: var(--dark) 2px 2px 5px;
+    transform: translateX(-2px) translateY(-2px);
+  }
+
+  img {
+    max-height: .8em;
+    margin: 0;
+    margin-right: .5em;
   }
 }
