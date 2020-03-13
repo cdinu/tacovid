@@ -155,6 +155,17 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
     )
   }
 
+  const onTagClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const tag = e.target.innerText;
+    if (search.indexOf(tag) > -1) {
+      setSearch(s => s.replace(tag, '').trim());
+    } else {
+      setSearch(s => `${s} ${tag}`.trim());
+    }
+    e.stopPropagation();
+    e.preventDefault()
+  }
+
   return (
     <Flipper
       flipKey={products.map(p => p.data.Product).join('')}
@@ -210,7 +221,10 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
                 <div className={styles.rightSide}>
                   {star(item.Gold)}
                   {twitterIcon(item.Twitter)}
-                  <span className={styles.category}>{item.Software_category}</span>
+                  <button
+                    className={styles.category}
+                    onClick={onTagClick}
+                  >{item.Software_category}</button>
                   <img src={icon} className={styles.icon} alt='click to open' />
                 </div>
               </SmartLink>
