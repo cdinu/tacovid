@@ -3,10 +3,13 @@ module.exports = {
     title: `Tech against Coronavirus`,
     description: `Simple list to help you work and learn #remotely. In the times of coronavirus outbreak lots of software companies are helping teams around the world keep a certain level of normality. Stay safe!`,
     author: `@techagainstcovid`,
+    siteUrl: process.env.SITE_URL || 'https://techagainstcoronavirus.com',
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
