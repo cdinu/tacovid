@@ -1,6 +1,6 @@
 # Tech against Coronavirus
 
-It is very likely that 1/5 of us will have to work for home in the very near future due to the coronavirus outbreak. So here’s a list of products you can use to maintain collaboration and work remotely with your team. As a distributed team ourselves, we’ve used many of these over the past 5 years. Please contribute with any software solution you’ve heard of or used yourself that might benefit others.
+It is very likely that 1/5 of us will have to work from home in the very near future due to the coronavirus outbreak. So here’s a list of products you can use to maintain collaboration and work remotely with your team. As a distributed team ourselves, we’ve used many of these over the past 5 years. Please contribute with any software solution you’ve heard of or used yourself that might benefit others.
 
 Let’s do this together!
 
@@ -11,7 +11,7 @@ https://techagainstcoronavirus.com/
 
 ## Contributing
 
-Any contribution is welcome. 
+Any contribution is welcome.
 
 This is a static website, generated using Gatsby.
 
