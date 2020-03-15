@@ -9,9 +9,8 @@ interface SmartLinkProps {
 
 const SmartLink:React.FC<SmartLinkProps> = ({ href, label, content, className, children}) => {
   const onClick = () => {
-    if (typeof window.ga === "function") {
-      // @ts-ignore
-      window.ga("send", "event", {
+    if (typeof (window as any).ga === "function") {
+      (window as any).ga("send", "event", {
         eventCategory: "Outbound Link",
         eventAction: "click",
         eventLabel: label || href || 'Unknown',
@@ -21,8 +20,22 @@ const SmartLink:React.FC<SmartLinkProps> = ({ href, label, content, className, c
     return true;
   }
 
-  const link = href === 'https://fast.com' ? href : `${href}?utm_source=tacv&utm_medium=website&utm_content=${content ||'list' }`;
+  const exceptions = [
+    'https://fast.com',
+  ];
 
+  const link = exceptions.indexOf(href) > -1
+    ? href
+    : `${href}?utm_source=tacv&utm_medium=website&utm_content=${content ||'list' }`;
+
+
+  const embedlyProps = className === 'embedly-card' ? {
+    'data-card-controls': 0,
+    'data-card-chrome': 0,
+    'data-card-recommend': 0,
+    'data-card-width': '100%',
+    'data-card-key': process.env.GATSBY_EMBEDLY_KEY,
+  } : {};
 
   return (
     <a
@@ -31,6 +44,7 @@ const SmartLink:React.FC<SmartLinkProps> = ({ href, label, content, className, c
       className={className}
       target="_blank"
       rel="noopener noreferrer"
+      {...embedlyProps}
     >
       {children}
     </a>
