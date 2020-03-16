@@ -21,9 +21,12 @@ const SmartLink:React.FC<SmartLinkProps> = ({ href, label, content, className, c
     return true;
   }
 
+  const link = href === 'https://fast.com' ? href : `${href}?utm_source=tacv&utm_medium=website&utm_content=${content ||'list' }`;
+
+
   return (
     <a
-      href={`${href}?utm_source=tacv&utm_medium=website&utm_content=${content ||'list' }`}
+      href={link}
       onClick={onClick}
       className={className}
       target="_blank"
