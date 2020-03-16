@@ -15,6 +15,7 @@ const Footer = () => (
         <img src={withPrefix('/images/instagram-feather.svg')} alt="" />
         <span>Follow us on Instagram</span>
       </a>
+      <a href="https://www.producthunt.com/posts/tech-against-coronavirus?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-tech-against-coronavirus" target="_blank" rel="noopener noreferrer" style={{ maxHeight: '54px' }}><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=188153&theme=light" alt="Tech Against Coronavirus - A list of products for #remote working and learning | Product Hunt Embed" style={{width: '250px', height: '54px'}} width="250px" height="54px" /></a>
     </div>
     <div className={styles.copyrightContainer}>
       © {new Date().getFullYear()}, created by
