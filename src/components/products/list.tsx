@@ -7,17 +7,22 @@ import styles from './list.module.scss';
 import icon from '../../images/icons/hs-url.svg';
 
 import SmartLink from '../smart-link';
-
-export interface ProductListProps {
-  nodes: any;
-  segment: 'Work' | 'Edu' | 'News' | 'Covid-19' | undefined;
-  type: 'recommended' | undefined;
-}
+import { Product } from "../../createPages"
+import slugify from "slugify"
 
 type SortBy = 'Default' | 'Added' | 'Name';
+type Segment = 'Work' | 'Edu' | 'News' | 'Covid-19';
+type Type = 'recommended';
+
+export interface ProductListProps {
+  nodes: [{ data: Product }];
+  segment?: Segment;
+  type?: Type;
+  category?: string;
+}
 
 // component dumb
-const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
+export const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type,category }) => {
   let products = nodes.filter(({ data }) => data.Added)
 
   const [search, setSearch] = React.useState('');
@@ -25,7 +30,7 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
 
   if (segment) {
     products = products.filter(
-      ({ data }) => (data.Tags || []).indexOf(segment) > -1
+      ({ data }) => data.Tags && data.Tags?.indexOf(segment) > -1
     )
   }
 
@@ -54,6 +59,9 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
       break;
     case 'Added':
       products = products.sort(({data: a}, { data: b}) => {
+        if (!a.Added) return 1;
+        if (!b.Added) return -1;
+
         if (a.Added < b.Added) return 1;
         if (a.Added > b.Added) return -1;
         // sort by name
@@ -82,7 +90,7 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
       </a>
     ) : null
 
-  const star = (gold: string | undefined) =>
+  const star = (gold: boolean | undefined) =>
     gold ? (
       <img
         src={withPrefix('/images/star.svg')}
@@ -136,7 +144,7 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
   }
 
   const getSortBy = () => {
-    const onChange = (event:React.FocusEventHandler<HTMLSelectElement>) => {
+    const onChange = (event:any) => {
       setSortBy(event.target.value)
     }
 
@@ -155,16 +163,26 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
     )
   }
 
-  const onTagClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const tag = e.target.innerText;
-    if (search.indexOf(tag) > -1) {
-      setSearch(s => s.replace(tag, '').trim());
-    } else {
-      setSearch(s => `${s} ${tag}`.trim());
-    }
-    e.stopPropagation();
-    e.preventDefault()
-  }
+  const segments = segment ? (
+    <>
+      <Link to='/' className={styles.linkItem} activeClassName={styles.active}>
+        Recommended {type === 'recommended' && `(${nrProducts})`}
+      </Link>
+      <Link to='/work' className={styles.linkItem} activeClassName={styles.active}>
+          Work {segment === 'Work' && `(${nrProducts})`}
+      </Link>
+      <Link to='/edu' className={styles.linkItem} activeClassName={styles.active}>
+      Edu {segment === 'Edu' && `(${nrProducts})`}
+      </Link>
+      <Link to='/covid-19' className={styles.linkItem} activeClassName={styles.active}>
+      Covid-19 {segment === 'Covid-19' && `(${nrProducts})`}
+      </Link>
+      <Link to='/all' className={styles.linkItem} activeClassName={styles.active}>
+      All{' '}
+      {segment === null && type !== 'recommended' && `(${nrProducts})`}
+      </Link>
+    </>
+    ): category;
 
   return (
     <Flipper
@@ -178,22 +196,7 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
     >
       <div className={styles.headerContainer}>
         <div className={styles.header}>
-          <Link to='/' className={styles.linkItem} activeClassName={styles.active}>
-            Recommended {type === 'recommended' && `(${nrProducts})`}
-          </Link>
-          <Link to='/work' className={styles.linkItem} activeClassName={styles.active}>
-            Work {segment === 'Work' && `(${nrProducts})`}
-          </Link>
-          <Link to='/edu' className={styles.linkItem} activeClassName={styles.active}>
-            Edu {segment === 'Edu' && `(${nrProducts})`}
-          </Link>
-          <Link to='/covid-19' className={styles.linkItem} activeClassName={styles.active}>
-            Covid-19 {segment === 'Covid-19' && `(${nrProducts})`}
-          </Link>
-          <Link to='/all' className={styles.linkItem} activeClassName={styles.active}>
-            All{' '}
-            {segment === null && type !== 'recommended' && `(${nrProducts})`}
-          </Link>
+          {segments}
           <div className={styles.space} />
           <div className={styles.searchBox}>
             {getSearchBox()}
@@ -221,10 +224,12 @@ const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type }) => {
                 <div className={styles.rightSide}>
                   {star(item.Gold)}
                   {twitterIcon(item.Twitter)}
-                  <button
-                    className={styles.category}
-                    onClick={onTagClick}
-                  >{item.Software_category}</button>
+                  {!category && item.Software_category && (
+                    <Link
+                      className={styles.category}
+                      to={`/c/${slugify(item.Software_category.toLowerCase())}`}
+                    >{item.Software_category}</Link>
+                  )}
                   <img src={icon} className={styles.icon} alt='click to open' />
                 </div>
               </SmartLink>
@@ -259,7 +264,7 @@ const query = graphql`
 `
 
 // container
-export default ({ segment, type }) => (
+export default ({ segment, type }: { segment: Segment, type: Type}) => (
   <StaticQuery
     query={query}
     render={data => (
