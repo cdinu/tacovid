@@ -61,4 +61,27 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
       path: slug,
     });
   });
+
+  const categories = new Set<string>();
+  for (let node of nodes) {
+    if(node.data.Software_category) {
+      categories.add(node.data.Software_category);
+    }
+  }
+
+  categories.forEach((category: string) => {
+    const slug = `/c/${slugify(category.toLowerCase())}`;
+    actions.createPage({
+      component: resolve(__dirname, 'templates/category.tsx'),
+      context: {
+        category,
+        nodes: nodes
+          .filter(node => (
+            node.data.Added
+            && node.data.Software_category === category
+          )),
+      },
+      path: slug,
+    });
+  })
 };
