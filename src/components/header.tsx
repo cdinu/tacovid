@@ -32,7 +32,7 @@ const Header = ({ mode }: HeaderProps) => {
           ?
             <>
               <p className="">
-                It is very likely that 1/5 of us will have to work from home in the very near future due to the coronavirus outbreak. So here’s a list of products you can use to maintain collaboration and work remotely with your team. As a distributed team ourselves, we’ve used many of these over the past 5 years. Please contribute with any software solution you’ve heard of or used yourself that might benefit others.<br />
+                It is very likely that most of us will have to work from home in the very near future due to the coronavirus outbreak. So here’s a list of products you can use to maintain collaboration and work remotely with your team. As a distributed team ourselves, we’ve used many of these over the past 5 years. Please contribute with any software solution you’ve heard of or used yourself that might benefit others.<br />
                 Let’s do this together.
               </p>
               <div className="">
