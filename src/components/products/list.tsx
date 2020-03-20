@@ -182,7 +182,7 @@ export const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type,c
       {segment === null && type !== 'recommended' && `(${nrProducts})`}
       </Link>
     </>
-    ): category;
+    ): (<div className={styles.category}>{category}</div>);
 
   return (
     <Flipper
@@ -210,30 +210,28 @@ export const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type,c
       <div>
         {products.map(({ data: item }) => (
           <Flipped key={item.Product} flipId={item.Product}>
-            <div>
-              <SmartLink
-                href={item.Website}
-                className={styles.item}
-                label={item.Product}
-              >
-                <div className={styles.productName} title={item.Details}>
-                  {favicon(item.Website, item.Product)}
-                  <div className={styles.name}>{item.Product}</div>
-                </div>
-                <div className={styles.details} title={item.Details}>{item.Details}</div>
-                <div className={styles.rightSide}>
-                  {star(item.Gold)}
-                  {twitterIcon(item.Twitter)}
-                  {!category && item.Software_category && (
-                    <Link
-                      className={styles.category}
-                      to={`/c/${slugify(item.Software_category.toLowerCase())}`}
-                    >{item.Software_category}</Link>
-                  )}
-                  <img src={icon} className={styles.icon} alt='click to open' />
-                </div>
-              </SmartLink>
-            </div>
+            <SmartLink
+              href={item.Website}
+              className={styles.item}
+              label={item.Product}
+            >
+              <div className={styles.productName} title={item.Details}>
+                {favicon(item.Website, item.Product)}
+                <div className={styles.name}>{item.Product}</div>
+              </div>
+              <div className={styles.details} title={item.Details}>{item.Details}</div>
+              <div className={styles.rightSide}>
+                {star(item.Gold)}
+                {twitterIcon(item.Twitter)}
+                {!category && item.Software_category && (
+                  <Link
+                    className={styles.category}
+                    to={`/c/${slugify(item.Software_category.toLowerCase())}`}
+                  >{item.Software_category}</Link>
+                )}
+                <img src={icon} className={styles.icon} alt='click to open' />
+              </div>
+            </SmartLink>
           </Flipped>
         ))}
       </div>
