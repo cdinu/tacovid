@@ -53,12 +53,12 @@ export const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type,c
 
   switch (sortBy) {
     case 'Name':
-      products = products.sort(({data: a}, { data: b}) => {
+      products.sort(({data: a}, { data: b}) => {
         return (a.Product.toLowerCase() < b.Product.toLowerCase()) ? -1 : 1;
       });
       break;
     case 'Added':
-      products = products.sort(({data: a}, { data: b}) => {
+      products.sort(({data: a}, { data: b}) => {
         if (!a.Added) return 1;
         if (!b.Added) return -1;
 
@@ -163,7 +163,7 @@ export const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type,c
     )
   }
 
-  const segments = segment ? (
+  const segments = !category ? (
     <>
       <Link to='/' className={styles.linkItem} activeClassName={styles.active}>
         Recommended {type === 'recommended' && `(${nrProducts})`}
@@ -182,7 +182,12 @@ export const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type,c
       {segment === null && type !== 'recommended' && `(${nrProducts})`}
       </Link>
     </>
-    ): (<div className={styles.category}>{category}</div>);
+    ): (
+      <>
+        <button onClick={() => window.history.back()} className={styles.backButton}>➜</button>
+        <div className={styles.categoryTitle}>{category}</div>
+      </>
+    );
 
   return (
     <Flipper

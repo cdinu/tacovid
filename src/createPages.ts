@@ -50,17 +50,18 @@ export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
     allAirtable: { nodes },
   } = result.data as AllAirtable;
 
-  nodes.filter(node => node.data.Added).forEach((node) => {
-    const { data: item } = node;
-    const slug = `/p/${slugify(item.Product.toLowerCase())}`;
-    actions.createPage({
-      component: resolve(__dirname, 'templates/product.tsx'),
-      context: {
-        item,
-      },
-      path: slug,
-    });
-  });
+  // SKIP PRODUCT PAGE FOR NOW
+  // nodes.filter(node => node.data.Added).forEach((node) => {
+  //   const { data: item } = node;
+  //   const slug = `/p/${slugify(item.Product.toLowerCase())}`;
+  //   actions.createPage({
+  //     component: resolve(__dirname, 'templates/product.tsx'),
+  //     context: {
+  //       item,
+  //     },
+  //     path: slug,
+  //   });
+  // });
 
   const categories = new Set<string>();
   for (let node of nodes) {

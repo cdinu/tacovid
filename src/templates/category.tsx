@@ -15,7 +15,6 @@ export default (props:CategoryPageProps) => {
 
   return (
     <Layout>
-      <h1>{category}</h1>
       <ProductList nodes={nodes} category={category} />
     </Layout>
   );
