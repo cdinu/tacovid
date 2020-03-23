@@ -261,3 +261,11 @@
     }
   }
 }
+
+.backButton {
+  transform: rotate(180deg);
+}
+
+.categoryTitle {
+  text-transform: capitalize;
+}
