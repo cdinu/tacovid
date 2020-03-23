@@ -10,7 +10,7 @@ const Header = ({ mode }: HeaderProps) => {
 
   const tweetThis =  () => (
     <a
-      href='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechagainstcoronavirus.com%2F&via=%40tacovid&text=300+%20products%20for%20remote%20working&hashtags=%23techagainstcoronavirus%20%23remotely%20%23workremotely%20%23learnremotely%20%23workfromhome'
+      href='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechagainstcoronavirus.com%2F&via=%40tacovid&text=400+%20products%20for%20remote%20working&hashtags=%23techagainstcoronavirus%20%23remotely%20%23workremotely%20%23learnremotely%20%23workfromhome'
       target='_blank'
       rel='noopener noreferrer'
       className={styles.tweetaboutthis}
