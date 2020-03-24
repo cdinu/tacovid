@@ -263,9 +263,38 @@
 }
 
 .backButton {
-  transform: rotate(180deg);
+  display: flex;
+  // transform: rotate(180deg);
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    svg {
+      circle {
+        fill: var(--blue);
+        stroke: var(--blue);
+      }
+
+      path {
+        stroke: white;
+      }
+    }
+  }
+
 }
 
 .categoryTitle {
   text-transform: capitalize;
+  // font-weight: bold;
+  background-color: var(--orange);
+  border-radius: 15px;
+  padding: 0 1em;
+  color: var(--black);
 }

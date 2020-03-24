@@ -112,21 +112,6 @@ export const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type,c
     />
   )
 
-  // const tweetThis =  () => (
-  //   <a
-  //     href='https://twitter.com/intent/tweet?url=https%3A%2F%2Ftechagainstcoronavirus.com&text=Awesome%20list%20for%20working%20remotely&hashtags=techagainstcoronavirus%2Cremotely%2Cworkremotely%2Clearnremotely'
-  //     target='_blank'
-  //     rel='noopener noreferrer'
-  //     className={styles.tweetaboutthis}
-  //   >
-  //     <img
-  //       src={withPrefix('/images/twitter-logo.png')}
-  //       alt='tweet this'
-  //     />
-  //     <span>Tweet about this</span>
-  //   </a>
-  // )
-
   const getSearchBox = () => {
     const onChange = (event:React.ChangeEvent<HTMLInputElement>) => {
       setSearch(event.target.value)
@@ -163,6 +148,25 @@ export const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type,c
     )
   }
 
+  const arrowButton = (
+    <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    fill="none"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    className="feather feather-arrow-left-circle"
+    viewBox="0 0 24 24"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <path d="M12 8L8 12 12 16"></path>
+    <path d="M16 12L8 12"></path>
+  </svg>
+  );
+
   const segments = !category ? (
     <>
       <Link to='/' className={styles.linkItem} activeClassName={styles.active}>
@@ -184,7 +188,7 @@ export const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type,c
     </>
     ): (
       <>
-        <button onClick={() => window.history.back()} className={styles.backButton}>➜</button>
+        <button onClick={() => window.history.back()} className={styles.backButton}>{arrowButton}</button>
         <div className={styles.categoryTitle}>{category}</div>
       </>
     );
@@ -209,7 +213,6 @@ export const ProductList: React.FC<ProductListProps> = ({ nodes, segment, type,c
           <div className={styles.searchBox}>
             {getSortBy()}
           </div>
-          {/* <div>{tweetThis()}</div> */}
         </div>
       </div>
       <div>
