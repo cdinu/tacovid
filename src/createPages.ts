@@ -22,7 +22,7 @@ interface AllAirtable {
 
 export const createPages = async ({ graphql, actions }: CreatePagesArgs) => {
   const result = await graphql(`
-    query MyQuery {
+    query GetAirtableQuery {
       allAirtable(
         sort: {
           fields: [data___Gold, data___Added, data___Product]

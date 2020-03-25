@@ -270,7 +270,7 @@ const query = graphql`
 `
 
 // container
-export default ({ segment, type }: { segment: Segment, type: Type}) => (
+export default ({ segment, type }: { segment?: Segment, type: Type}) => (
   <StaticQuery
     query={query}
     render={data => (
